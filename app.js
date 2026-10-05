@@ -1,5 +1,5 @@
 const CONFIG = {
-  API_URL: 'https://script.google.com/macros/s/AKfycbwCe1P4F15p9gzCbF2jpyiRaJMb1Wplx5AXhTxgtpwqFsLo3tQ05RfY3kRWP3-Fh-EmRg/exec',
+  API_URL: 'https://script.google.com/macros/s/AKfycbxOBB6Lis-CQ8k9RYQ0RAUJhcjJT-7Z7gauTHBySTK_YNdEMYOl-HZMxzXiqyrPziJ3ow/exec',
   CLIENT_ID: '1030835028534-bamr16k1vgggv0vlp6lhu3j9q7bhbhau.apps.googleusercontent.com',
 };
 
