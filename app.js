@@ -1,6 +1,6 @@
 const CONFIG = {
   API_URL: 'https://script.google.com/macros/s/AKfycbwCe1P4F15p9gzCbF2jpyiRaJMb1Wplx5AXhTxgtpwqFsLo3tQ05RfY3kRWP3-Fh-EmRg/exec',
-  CLIENT_ID: '277716951356-3ma5t20ke5f8g5l5jh6stbup2ssunja2.apps.googleusercontent.com',
+  CLIENT_ID: '1030835028534-bamr16k1vgggv0vlp6lhu3j9q7bhbhau.apps.googleusercontent.com',
 };
 
 const STATUS = ['ดำเนินการ', 'รอดำเนินการ', 'เสร็จสิ้น', 'ยกเลิก'];
