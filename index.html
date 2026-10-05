@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="only light">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>งานของฝ่าย</title>
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#e6e9ee">
+<link rel="preconnect" href="https://script.google.com">
+<link rel="preconnect" href="https://script.googleusercontent.com">
+<link rel="preconnect" href="https://accounts.google.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Mali:wght@600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+<div id="login" class="login">
+  <div class="login-card">
+    <span class="logo" aria-hidden="true" style="width:64px;height:64px"></span>
+    <h1 id="login-title">งานของฝ่าย</h1>
+    <p id="login-text">เข้าสู่ระบบด้วยบัญชี Google ที่ผู้ดูแลเพิ่มไว้ในระบบ</p>
+    <div id="gsi-btn"></div>
+    <button class="btn g-btn" id="b-redirect" type="button" hidden><svg viewBox="0 0 48 48" width="20" height="20" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>เข้าสู่ระบบด้วย Google</button>
+    <p id="login-inapp" hidden>เบราว์เซอร์ในแอปนี้เข้าสู่ระบบ Google ไม่ได้ กดเมนูแล้วเลือกเปิดใน Safari หรือ Chrome</p>
+    <p id="login-msg" class="login-msg" role="alert"></p>
+  </div>
+</div>
+
+<div id="app" hidden>
+  <header class="top">
+    <span class="logo" aria-hidden="true"></span>
+    <div class="brand">
+      <h1>งานของฝ่าย</h1>
+      <p><span id="today-line"></span><span id="sync" class="sync" role="status"></span></p>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="เลือกดูงานของใคร">
+      <button class="tab" role="tab" data-tab="mine">งานของฉัน<span class="n" id="n-mine"></span></button>
+      <button class="tab" role="tab" data-tab="all">งานทั้งฝ่าย<span class="n" id="n-all"></span></button>
+    </nav>
+    <div class="top-end">
+      <span class="who" id="who"></span>
+      <button class="btn icon ghost" id="b-admin" hidden aria-label="ตั้งค่าระบบ" title="ตั้งค่าระบบ"></button>
+      <button class="btn icon ghost" id="b-reload" aria-label="โหลดข้อมูลใหม่" title="โหลดข้อมูลใหม่"></button>
+      <button class="btn icon ghost" id="b-logout" aria-label="ออกจากระบบ" title="ออกจากระบบ"></button>
+    </div>
+  </header>
+
+  <main>
+    <div class="filters">
+      <button class="btn primary" id="b-new" type="button"></button>
+      <label class="sr" for="f-term">ภาคเรียน</label>
+      <select class="input" id="f-term" hidden></select>
+      <label class="sr" for="f-user">กรองตามคน</label>
+      <select class="input" id="f-user"></select>
+      <div class="search">
+        <label class="sr" for="f-q">ค้นหางาน</label>
+        <span id="search-ic"></span>
+        <input class="input" id="f-q" type="search" placeholder="ค้นหาชื่องาน แท็ก หรือที่มา">
+      </div>
+    </div>
+    <div class="chips" id="tag-chips" role="group" aria-label="กรองตามแท็ก" hidden></div>
+
+    <section id="list" aria-live="polite"></section>
+  </main>
+</div>
+
+<div id="backdrop" class="backdrop" hidden></div>
+<aside id="drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="dr-title" hidden>
+  <div class="dr-head">
+    <h2 id="dr-title"></h2>
+    <button class="btn icon ghost" id="dr-close" aria-label="ปิด"></button>
+  </div>
+  <div class="dr-body" id="dr-body"></div>
+</aside>
+
+<datalist id="tag-list"></datalist>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script src="app.js?v=3"></script>
+<script src="https://accounts.google.com/gsi/client" async defer onload="initGsi()"></script>
+</body>
+</html>
